@@ -199,14 +199,16 @@ class StudentController extends Controller
         // Encrypt the student's code
         $code = Crypt::encrypt($student->student_code);
 
-        // Get the local IP address dynamically for LAN
-        $localIp = gethostbyname(gethostname());  // Get the local network IP address dynamically
+        // Get the APP_URL from the configuration
+        $appUrl = config('app.url');
+    
+        // Sample IP for production (replace with your actual IP):
+        // Example: http://123.45.67.89
+        // You can set APP_URL in your .env file to use the actual IP.
 
-        $port = 8000;
-
-        // Generate the URL with the local IP and port
-        $url = "http://$localIp:$port/students/$code";
-
+        // Generate the full URL with the encrypted code
+        $url = $appUrl . "/students/$code";
+        
         // Generate the QR code for that URL
         $qrCode = QrCode::size(300)->generate($url);
 
