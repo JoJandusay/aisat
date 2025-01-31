@@ -1,0 +1,79 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\ClinicReport;
+use App\Models\Student;
+use Illuminate\Http\Request;
+
+class ClinicReportController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        return view('clinical-reports.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+
+        $data = $request->validate([
+            'student_id' => 'required',
+            'report_details' => 'required',
+            'type' => 'required'
+        ]);
+        $data['report_date'] =  now();
+
+        ClinicReport::create($data);
+
+
+        return redirect()->route('students.index')->with('success', 'Report added to the system');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Student $student)
+    {
+        return view('students.clinic-records',[
+            'student' => $student
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(ClinicReport $clinicReport)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, ClinicReport $clinicReport)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(ClinicReport $clinicReport)
+    {
+        //
+    }
+}
