@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ClinicReport;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class ClinicReportController extends Controller
 {
@@ -39,8 +40,7 @@ class ClinicReportController extends Controller
 
         ClinicReport::create($data);
 
-
-        return redirect()->route('students.index')->with('success', 'Report added to the system');
+        return redirect()->route('success');
     }
 
     /**

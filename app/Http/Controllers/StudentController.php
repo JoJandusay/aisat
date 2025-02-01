@@ -91,7 +91,7 @@ class StudentController extends Controller
             return view('students.show', ['student' => $student]);
         } catch (\Exception $e) {
             // If the decryption fails or the student is not found, reroute to another route
-            return redirect()->route('students.index')->with('error', 'Invalid student code');
+            return abort(404);
         }
     }
 

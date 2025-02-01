@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', [LoginController::class, 'authenticate'])->name('login');
 Route::get('login', [LoginController::class, 'index']);
 
+Route::view('success', 'success')->name('success');
+Route::get('students/{code}', [StudentController::class, 'show'])->name('students.show');
 
 Route::group(['middleware' => 'auth'], function () {
     
@@ -26,7 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('students', StudentController::class);
+    Route::resource('students', StudentController::class)->except(['show']);
     Route::get('student/qr/{student}', [StudentController::class, 'showQR'])->name('studentQR.show');
 
     Route::get('clinical-reports', [ClinicReportController::class, 'index'])->name('clinical-reports.index');
