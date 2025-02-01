@@ -13,6 +13,7 @@ Route::get('login', [LoginController::class, 'index']);
 
 Route::view('success', 'success')->name('success');
 Route::get('students/{code}', [StudentController::class, 'show'])->name('students.show');
+Route::post('clinical-reports', [ClinicReportController::class, 'store'])->name('clinical-reports.store');
 
 Route::group(['middleware' => 'auth'], function () {
     
@@ -33,7 +34,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('clinical-reports', [ClinicReportController::class, 'index'])->name('clinical-reports.index');
     Route::get('clinical-reports/{student}', [ClinicReportController::class, 'show'])->name('clinical-reports.show');
-    Route::post('clinical-reports', [ClinicReportController::class, 'store'])->name('clinical-reports.store');
     
     Route::patch('archives/{student}', [StudentController::class, 'archive'])->name('students.archive');
     Route::patch('archives/{student}/remove', [StudentController::class, 'removeArchive'])->name('students.archive.remove');
