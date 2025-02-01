@@ -12,7 +12,7 @@ Route::post('login', [LoginController::class, 'authenticate'])->name('login');
 Route::get('login', [LoginController::class, 'index']);
 
 Route::view('success', 'success')->name('success');
-Route::get('students/{code}', [StudentController::class, 'show'])->name('students.show');
+
 Route::post('clinical-reports', [ClinicReportController::class, 'store'])->name('clinical-reports.store');
 
 Route::group(['middleware' => 'auth'], function () {
@@ -40,3 +40,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('archives', [StudentController::class, 'archiveTable'])->name('archive');
     Route::get('high-risk', [StudentController::class, 'highRisk'])->name('high-risk');
 });
+
+Route::get('students/{code}', [StudentController::class, 'show'])->name('students.show');
