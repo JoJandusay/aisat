@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ClinicReport;
 use App\Models\Student;
+use App\Models\User;
+use App\Notifications\NewReportNotfication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
@@ -38,7 +40,14 @@ class ClinicReportController extends Controller
         ]);
         $data['report_date'] =  now();
 
-        ClinicReport::create($data);
+        $report = ClinicReport::create($data);
+
+
+        $users = User::all();
+        
+        foreach ($users as $user) {
+            $user->notify(new NewReportNotfication($report));
+        }
 
         return redirect()->route('success');
     }
@@ -48,7 +57,7 @@ class ClinicReportController extends Controller
      */
     public function show(Student $student)
     {
-        return view('students.clinic-records',[
+        return view('students.clinic-records', [
             'student' => $student
         ]);
     }
