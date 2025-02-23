@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Admin',
             'email' => 'aisat.adbaliuag@gmail.com',
-            'is_superadmin' => true
+            'is_superadmin' => true,
+            'password' => 'aisataisat00'
         ]);
     }
 }
