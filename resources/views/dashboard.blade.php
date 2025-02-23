@@ -27,33 +27,64 @@
         </ol>
     </nav>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div
-            class="bg-green-400 flex items-center justify-between p-6 border-2 rounded-lg dark:border-gray-600 h-32 shadow-lg hover:bg-green-500 transition-colors">
-            <span class="text-lg text-gray-700 dark:text-white font-semibold">Total Students</span>
-            <span class="text-4xl font-semibold text-gray-900 dark:text-white">{{ $students }}</span>
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 py-4">
+        <div class="bg-white w-full shadow-md rounded-lg p-4 flex items-center space-x-4">
+            <div class="bg-blue-100 p-2 rounded-lg">
+                <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 8v4l3 3m9-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <div>
+                <p class="text-xl font-bold">{{ $students }}</p>
+                <p class="text-gray-500 text-sm">Total Students</p>
+            </div>
         </div>
 
-        <div
-            class="bg-blue-400 flex items-center justify-between p-6 border-2 rounded-lg dark:border-gray-600 h-32 shadow-lg hover:bg-blue-500 transition-colors">
-            <span class="text-lg text-gray-700 dark:text-white font-semibold">Archived</span>
-            <span class="text-4xl font-semibold text-gray-900 dark:text-white">{{ $archived }}</span>
+        <div class="bg-white w-full shadow-md rounded-lg p-4 flex items-center space-x-4">
+            <div class="bg-blue-100 p-2 rounded-lg">
+                <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </div>
+            <div>
+                <p class="text-xl font-bold">{{ $archived }}</p>
+                <p class="text-gray-500 text-sm">Archived Students</p>
+            </div>
         </div>
 
-        <div
-            class="bg-yellow-400 flex items-center justify-between p-6 border-2 rounded-lg dark:border-gray-600 h-32 shadow-lg hover:bg-yellow-500 transition-colors">
-            <span class="text-lg text-gray-700 dark:text-white font-semibold">High Risk</span>
-            <span class="text-4xl font-semibold text-gray-900 dark:text-white">{{ $high_risk }}</span>
+        <div class="bg-white w-full shadow-md rounded-lg p-4 flex items-center space-x-4">
+            <div class="bg-blue-100 p-2 rounded-lg">
+                <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 14l6.16-3.422A12.042 12.042 0 0112 21a12.042 12.042 0 01-6.16-10.422L12 14z"></path>
+                </svg>
+            </div>
+            <div>
+                <p class="text-xl font-bold">{{ $high_risk }}</p>
+                <p class="text-gray-500 text-sm">High Risk</p>
+            </div>
         </div>
 
-        <div
-            class="bg-red-400 flex items-center justify-between p-6 border-2 rounded-lg dark:border-gray-600 h-32 shadow-lg hover:bg-red-500 transition-colors">
-            <span class="text-lg text-gray-700 dark:text-white font-semibold">Reports</span>
-            <span class="text-4xl font-semibold text-gray-900 dark:text-white">{{ $reports }}</span>
+        <div class="bg-white w-full shadow-md rounded-lg p-4 flex items-center space-x-4">
+            <div class="bg-blue-100 p-2 rounded-lg">
+                <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 2a10 10 0 100 20 10 10 0 000-20z">
+                    </path>
+                </svg>
+            </div>
+            <div>
+                <p class="text-xl font-bold">{{ $reports }}</p>
+                <p class="text-gray-500 text-sm">Reported Students</p>
+            </div>
         </div>
     </div>
-
-
 
     <div class="w-full overflow-hidden">
         <div class="mb-2 mt-8">
@@ -79,7 +110,8 @@
                                 {{ $loop->iteration }}
                             </td>
                             <td class="px-4 py-3">
-                                {{ $emergency_student->student->firstname }} {{ $emergency_student->student->lastname }}
+                                {{ $emergency_student->student->firstname }}
+                                {{ $emergency_student->student->lastname }}
                                 <span class="text-xs">
                                     ({{ $emergency_student->student->level }}
                                     {{ $emergency_student->student->section }})
