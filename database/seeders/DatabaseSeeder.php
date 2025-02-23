@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'name' => 'Aisat_sadmin',
-            'email' => 'sadmin@aisat.com',
+            'name' => 'Admin',
+            'email' => 'aisat.adbaliuag@gmail.com',
             'is_superadmin' => true
         ]);
     }
