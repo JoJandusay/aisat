@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\ClinicReport;
 use App\Models\Student;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        // dd(ClinicReport::whereMonth('report_date', Carbon::now()->month)->selectRaw('DATE(report_date) as report_date, COUNT(*) as total')->groupByRaw('DATE(report_date)')->get());
         return view('dashboard', [
             'high_risk' => Student::where('is_archived', false)
                 ->where(function ($query) {
@@ -28,6 +30,7 @@ class DashboardController extends Controller
             'reports' => ClinicReport::count(),
             'emergency_students' => ClinicReport::with('student')->whereDate('report_date', now())->where('type', 'emergency')->limit(10)->get(),
             'clinic_students' => ClinicReport::with('student')->whereDate('report_date', now())->where('type', 'clinic')->limit(10)->get(),
+            'reports_this_month' => ClinicReport::whereMonth('report_date', Carbon::now()->month)->selectRaw('DATE(report_date) as report_date, COUNT(*) as total')->groupByRaw('DATE(report_date)')->get()
         ]);
     }
 }
