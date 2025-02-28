@@ -37,13 +37,14 @@ class NewReportNotfication extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
+            ->subject('New Clinic Report')
             ->from('aisat.adbaliuag@gmail.com', 'AISAT')
             ->subject('New' . ucfirst($this->report->type) . 'Report')
-            ->line("HEALTH ALERT! A student's QR code has been scanned.")
+            ->greeting("HEALTH ALERT! A student's QR code has been scanned.")
             ->line('📌 NOTE: ' . $this->report->report_details)
             ->line('Please check the system for details.')
             ->line('---')
-            ->salutation('Regards, Health Information System Asian Institute of Science and Technology');
+            ->salutation('Regards,\n\nHealth Information System Asian Institute of Science and Technology');
     }
 
     /**

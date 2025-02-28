@@ -38,10 +38,10 @@ class OtpNotification extends Notification
     {
         return (new MailMessage)
             ->subject('OTP Code')
-            ->line('Your OTP code is: ' . $this->otp)
+            ->greeting('Your OTP code is: ' . $this->otp)
             ->line('This code is valid for only 5 minutes. Please do not share it with anyone.')
             ->line('---')
-            ->salutation('Regards, Health Information System Asian Institute of Science and Technology');
+            ->salutation('Regards,\n\nHealth Information System Asian Institute of Science and Technology');
     }
 
     /**
