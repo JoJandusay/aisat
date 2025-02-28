@@ -38,13 +38,12 @@ class NewReportNotfication extends Notification
     {
         return (new MailMessage)
             ->from('aisat.adbaliuag@gmail.com', 'AISAT')
-            ->subject('New Clinic Report')
-            ->greeting("⚠️ HEALTH ALERT! A student's QR code has been scanned.")
-            ->line('📌 **NOTE:** ' . $this->report)
-            ->line('🔍 Please check the system for details.')
+            ->subject('New' . ucfirst($this->report->type) . 'Report')
+            ->line("HEALTH ALERT! A student's QR code has been scanned.")
+            ->line('📌 NOTE: ' . $this->report->report_details)
+            ->line('Please check the system for details.')
             ->line('---')
-            ->line('🏥 **Health Information System**')
-            ->line('🏫 **Asian Institute of Science and Technology**');
+            ->salutation('Regards, Health Information System Asian Institute of Science and Technology');
     }
 
     /**
