@@ -41,7 +41,9 @@ class OtpNotification extends Notification
             ->greeting('Your OTP code is: ' . $this->otp)
             ->line('This code is valid for only 5 minutes. Please do not share it with anyone.')
             ->line('---')
-            ->salutation('Regards,\n\nHealth Information System Asian Institute of Science and Technology');
+            ->salutation('Regards,')
+            ->salutation('Health Information System')
+            ->salutation('Asian Institute of Science and Technology');
     }
 
     /**
