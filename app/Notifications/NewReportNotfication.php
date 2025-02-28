@@ -44,8 +44,8 @@ class NewReportNotfication extends Notification
             ->line('📌 NOTE: ' . $this->report->report_details)
             ->line('Please check the system for details.')
             ->line('---')
-            ->salutation('Regards,')
-            ->salutation('Health Information System')
+            ->line('Regards,')
+            ->line('Health Information System')
             ->salutation('Asian Institute of Science and Technology');
     }
 
