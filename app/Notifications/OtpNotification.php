@@ -37,9 +37,13 @@ class OtpNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('Your OTP Code')
-            ->line('Your OTP code is: ' . $this->otp)
-            ->line('This code is valid for a short period.');
+            ->subject('🔑 Your OTP Code')
+            ->greeting('Hello!')
+            ->line('🛡️ Your **One-Time Password (OTP)** is:')
+            ->line('**' . $this->otp . '**')
+            ->line('⚠️ This code is valid for only 5 minutes. Please do not share it with anyone.')
+            ->line('Thank you for using our service!')
+            ->line('🔹 **AISAT Health Information System**');
     }
 
     /**
