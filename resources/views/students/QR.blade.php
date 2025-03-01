@@ -13,7 +13,6 @@
                 </a>
             </li>
             <li>
-
                 <div class="flex items-center">
                     <svg class="w-3 h-3 text-gray-400 mx-1 rtl:rotate-180" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
@@ -33,14 +32,42 @@
                 QR CODE</h3>
         </div>
     </div>
-    <div>
+    <div id="qrCodePrintSection">
         {{ $qr_code }}
     </div>
     <div class="flex flex-col gap-2 sm:flex-row mt-8">
         <a href="{{ route('students.index') }}"
             class="text-white block bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-3 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Go
             back</a>
-        <a href="#"
+        <a href="javascript:void(0);" onclick="printQRCode()"
             class="text-white block bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Print</a>
     </div>
+
+    <script>
+        // Function to print only the QR Code section
+        function printQRCode() {
+            var printSection = document.getElementById('qrCodePrintSection');
+
+            // Open a new window for the print preview
+            var printWindow = window.open('', '', 'height=1000,width=1000');
+
+            // Write the QR Code content into the print window with additional styles to center it
+            printWindow.document.write('<html><head><title>Print QR Code</title>');
+            printWindow.document.write('<style>');
+            printWindow.document.write(
+                'body { font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100%; }'
+                );
+            printWindow.document.write(
+            '#qrCodePrintSection { display: inline-block; margin: auto; }'); // Center the content in the div
+            printWindow.document.write('</style>');
+            printWindow.document.write('</head><body>');
+            printWindow.document.write(printSection.innerHTML); // The QR code content
+            printWindow.document.write('</body></html>');
+
+            // Close the document to prepare it for printing
+            printWindow.document.close();
+            printWindow.print(); // Trigger the print dialog
+        }
+    </script>
+
 </x-layouts.app>

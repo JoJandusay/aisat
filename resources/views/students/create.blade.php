@@ -269,7 +269,10 @@
                 <div class="p-5 border border-gray-200 dark:border-gray-700">
                     <div class="p-5 border border-gray-200 dark:border-gray-700 dark:bg-gray-900">
                         <div class="grid gap-6 mb-6 md:grid-cols-4">
-                            <div class="md:col-span-2">
+                            <div class="md:col-span-4">
+                                1. Immunization
+                            </div>
+                            <div class="md:col-span-2 pl-8">
                                 <label for="first_vaccine_name"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">1st Dose
                                     Vaccine Name</label>
@@ -278,7 +281,7 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Enter vaccine name" />
                             </div>
-                            <div class="md:col-span-2">
+                            <div class="md:col-span-2 pl-8">
                                 <label for="first_vaccine_date"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">1st Dose
                                     Date</label>
@@ -287,7 +290,7 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                             </div>
 
-                            <div class="md:col-span-2">
+                            <div class="md:col-span-2 pl-8">
                                 <label for="second_vaccine_name"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">2nd Dose
                                     Vaccine Name</label>
@@ -296,7 +299,7 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Enter vaccine name" />
                             </div>
-                            <div class="md:col-span-2">
+                            <div class="md:col-span-2 pl-8">
                                 <label for="second_vaccine_date"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">2nd Dose
                                     Date</label>
@@ -305,7 +308,7 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                             </div>
 
-                            <div class="md:col-span-2">
+                            <div class="md:col-span-2 pl-8">
                                 <label for="booster_name"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Booster
                                     Shot</label>
@@ -314,7 +317,7 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Enter vaccine name" />
                             </div>
-                            <div class="md:col-span-2">
+                            <div class="md:col-span-2 pl-8">
                                 <label for="booster_date"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Booster
                                     Date</label>
@@ -323,29 +326,39 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                             </div>
 
-                            <div>
-                                <label for="had_covid"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Had
-                                    covid-19?</label>
+
+                            <div class="md:col-span-4">
+                                2. Has your child had COVID-19? If yes, when?
+                            </div>
+                            <div class="pl-8">
+                                {{-- <label for="had_covid"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">2. Has your child had COVID-19?</label> --}}
                                 <input type="date" id="had_covid" name="had_covid"
                                     value="{{ old('had_covid') }}"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                             </div>
-                            <div class="col-start-1 col-span-full">
-                                <label for="Allergies"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Allergies</label>
+                            <div class="md:col-span-4">
+                                3. Allergies
+                            </div>
+                            <div class="col-start-1 col-span-full pl-8">
+                                {{-- <label for="Allergies"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Allergies</label> --}}
                                 <textarea
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    name="allergies" id="allergies" cols="100" rows="5">{{ old('allergies') }}</textarea>
+                                    placeholder="Cause / Reaction / Treatment" name="allergies" id="allergies" cols="100" rows="5">{{ old('allergies') }}</textarea>
                             </div>
-                            <div class="md:col-span-2">
+                            <div class="md:col-span-4">
+                                4. Medication
+                            </div>
+                            <div class="md:col-span-2 pl-8">
                                 <label for="daily_medication"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Taking
-                                    medication at home on daily basis? If yes fillout, otherwise leave blank.</label>
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Does your
+                                    child take
+                                    medication at home on a daily basis? If yes fillout, otherwise leave blank.</label>
                                 <input type="text" id="medication_name" name="medication_name"
                                     value="{{ old('medication_name') }}"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Enter medicine name" />
+                                    placeholder="Medication" />
                             </div>
                             <div class="flex items-end">
                                 <label for="daily_medication"
@@ -353,7 +366,7 @@
                                 <input type="text" id="used_to_treat" name="used_to_treat"
                                     value="{{ old('used_to_treat') }}"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Enter condition" />
+                                    placeholder="Used to treat" />
                             </div>
                             <div class="flex items-end">
                                 <label for="daily_medication"
@@ -361,31 +374,40 @@
                                 <input type="text" id="dose_time" name="dose_time"
                                     value="{{ old('dose_time') }}"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Enter dosage and schedule of administration" />
+                                    placeholder="Dose/Time" />
                             </div>
-                            <div class="col-start-1 col-span-full">
+                            <div class="md:col-span-4">
+                                5. Is your child
+                                receiving current or ongoing treatment for any medical, surgical, or psychological
+                                condition?
+                            </div>
+                            <div class="col-start-1 col-span-full pl-8">
                                 <label for="ongoing_treatment"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Is your child
-                                    receiving current or ongoing treatment for any medical, surgical, or psychological
-                                    condition? If yes fillout, otherwise leave blank.</label>
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">If yes,
+                                    please explain and send physician's statement.</label>
                                 <textarea
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     name="ongoing_treatment" id="ongoing_treatment" cols="100" rows="5">{{ old('ongoing_treatment') }}</textarea>
                             </div>
-                            <div class="col-start-1 col-span-full">
+                            <div class="md:col-span-4">
+                                6. Any medical
+                                condition that would not allow your child to participate in physical education or in
+                                Intramural sports?
+                            </div>
+                            <div class="col-start-1 col-span-full pl-8">
                                 <label for="condition_not_allow_pe"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Any medical
-                                    condition that would not allow your child to participate in physical education or in
-                                    Intramural sports? If yes fillout, otherwise leave blank.</label>
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">If yes,
+                                    please explain and send physician's statement.</label>
                                 <textarea
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     name="condition_not_allow_pe" id="condition_not_allow_pe" cols="100" rows="5">{{ old('condition_not_allow_pe') }}</textarea>
                             </div>
-
-                            <div>
-                                <label for="visual_dificulties"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Any visual
-                                    difficulties?</label>
+                            <div class="md:col-span-4">
+                                7. Visual Difficulties?
+                            </div>
+                            <div class="pl-8">
+                                {{-- <label for="visual_dificulties"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">If yes?</label> --}}
                                 <div class="flex pt-4">
                                     <div class="flex items-center me-4">
                                         <input id="none" type="radio" value=""
@@ -414,29 +436,39 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-start-1 col-span-full">
+                            <div class="md:col-span-4">
+                                8. Any previous
+                                difficulties with Hearing, Speech, Language Development?
+                            </div>
+                            <div class="col-start-1 col-span-full pl-8">
                                 <label for="hearing_speech_difficulties"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Any previous
-                                    difficulties with Hearing, Speech, Language Development? If yes fillout, otherwise
-                                    leave blank.</label>
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">If yes,
+                                    please explain and send physician's statement.</label>
                                 <textarea
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     name="hearing_speech_difficulties" id="hearing_speech_difficulties" cols="100" rows="5">{{ old('hearing_speech_difficulties') }}</textarea>
                             </div>
-                            <div class="col-start-1 col-span-full">
+                            <div class="md:col-span-4">
+                                9. Has your child
+                                had medical conditions? (Seizures, TB, Eczema, Asthma, Emotional Trauma, Heart
+                                Condition, Frequent Nosebleeds, etc.)?
+                            </div>
+                            <div class="col-start-1 col-span-full pl-8">
                                 <label for="medical_conditions"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Has your child
-                                    had medical conditions? (Seizures, TB, Eczema, Asthma, Emotional Trauma, Heart
-                                    Condition, Frequent Nosebleeds, etc.)? If yes fillout, otherwise leave
-                                    blank.</label>
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">If yes,
+                                    please explain and send physician's statement.</label>
                                 <textarea
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     name="medical_conditions" id="medical_conditions" cols="100" rows="5">{{ old('medical_conditions') }}</textarea>
                             </div>
-                            <div class="col-start-1 col-span-full">
-                                <label for="other_medical_conditions"
+                            <div class="md:col-span-4">
+                                10. Other
+                                medical/health information you may wish to include that may help us understand your child' s health needs:
+                            </div>
+                            <div class="col-start-1 col-span-full pl-8">
+                                {{-- <label for="other_medical_conditions"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Other
-                                    medical/health information:</label>
+                                    medical/health information:</label> --}}
                                 <textarea
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     name="other_medical_conditions" id="other_medical_conditions" cols="100" rows="5">{{ old('other_medical_conditions') }}</textarea>
