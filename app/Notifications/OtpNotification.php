@@ -38,6 +38,7 @@ class OtpNotification extends Notification
     {
         return (new MailMessage)
             ->subject('OTP Code')
+            ->from('aisat.adbaliuag@gmail.com', 'AISAT')
             ->greeting('Your OTP code is: ' . $this->otp)
             ->line('This code is valid for only 5 minutes. Please do not share it with anyone.')
             ->line('---')
