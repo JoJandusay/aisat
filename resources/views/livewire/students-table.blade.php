@@ -40,7 +40,7 @@
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
 
                 @forelse ($students as $student)
-                    <tr class="text-gray-700 dark:text-gray-400 divide-x">
+                    <tr class="text-gray-700 dark:text-gray-400 divide-x" wire:key="{{ $student->id }}">
                         <td class="px-4 py-3">
                             {{ $loop->iteration }}
                         </td>
@@ -62,22 +62,22 @@
                                     class="inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-gray-900 bg-green-200 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">
                                     Edit
                                 </a>
-                                <form class="hidden" id="delete-" action="{{ route('students.destroy', $student) }}"
-                                    method="post">
+                                <form class="hidden" id="delete-{{ $student->id }}"
+                                    action="{{ route('students.destroy', $student) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                 </form>
-                                <button form="delete-"
+                                <button form="delete-{{ $student->id }}"
                                     class="inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-gray-900 bg-red-300 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
                                     onclick="return confirm('Delete this student from the system?')">
                                     Delete
                                 </button>
-                                <form class="hidden" id="archive-" action="{{ route('students.archive', $student) }}"
-                                    method="post">
+                                <form class="hidden" id="archive-{{ $student->id }}"
+                                    action="{{ route('students.archive', $student) }}" method="post">
                                     @csrf
                                     @method('PATCH')
                                 </form>
-                                <button form="archive-"
+                                <button form="archive-{{ $student->id }}"
                                     class="inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-gray-900 bg-yellow-300 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
                                     onclick="return confirm('Move to archive this student?')">
                                     Archive
