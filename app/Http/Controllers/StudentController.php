@@ -39,18 +39,18 @@ class StudentController extends Controller
             'middlename' => 'nullable|string|max:255',
             'address' => 'required|string',
             'dob' => 'required|date|before:today',
-            'mobile_number' => 'regex:/^(09\d{9}|\+639\d{9})$/',
+            'mobile_number' => ['required', 'string', 'regex:/^(09\d{9}|\+639\d{9})$/'],
             'sex' => 'required|in:Male,Female',
             'level' => 'required',
             'section' => 'required',
             'father_lastname' => 'nullable|string|max:255',
             'father_firstname' => 'nullable|string|max:255',
             'father_middlename' => 'nullable|string|max:255',
-            'father_mobile_number' => 'nullable|regex:/^(09\d{9}|\+639\d{9})$/',
+            'father_mobile_number' => ['nullable', 'string', 'regex:/^(09\d{9}|\+639\d{9})$/'],
             'mother_lastname' => 'nullable|string|max:255',
             'mother_firstname' => 'nullable|string|max:255',
             'mother_middlename' => 'nullable|string|max:255',
-            'mother_mobile_number' => 'nullable|regex:/^(09\d{9}|\+639\d{9})$/',
+            'mother_mobile_number' => ['nullable', 'string', 'regex:/^(09\d{9}|\+639\d{9})$/'],
             'first_vaccine_name' => 'nullable|string|max:255',
             'second_vaccine_name' => 'nullable|string|max:255',
             'first_vaccine_date' => 'nullable|date|before_or_equal:today',
@@ -201,14 +201,14 @@ class StudentController extends Controller
 
         // Get the APP_URL from the configuration
         $appUrl = config('app.url');
-    
+
         // Sample IP for production (replace with your actual IP):
         // Example: http://123.45.67.89
         // You can set APP_URL in your .env file to use the actual IP.
 
         // Generate the full URL with the encrypted code
         $url = $appUrl . "/students/$code";
-        
+
         // Generate the QR code for that URL
         $qrCode = QrCode::size(300)->generate($url);
 
