@@ -25,6 +25,15 @@
             </li>
         </ol>
     </nav>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form action="{{ route('students.update', $student) }}" method="post">
         @csrf
         @method('PUT')
@@ -413,14 +422,11 @@
                                 7. Visual Difficulties?
                             </div>
                             <div class="pl-8">
-                                {{-- <label for="visual_dificulties"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Any visual
-                                    difficulties?</label> --}}
                                 <div class="flex pt-4">
                                     <div class="flex items-center me-4">
                                         <input id="none" type="radio" value=""
                                             {{ old('visual_dificulties', $student->visual_dificulties) == '' ? 'checked' : '' }}
-                                            name="visual_dificulties" checked
+                                            name="visual_dificulties"
                                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         <label for="none"
                                             class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">None</label>

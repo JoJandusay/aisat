@@ -143,7 +143,7 @@ class StudentController extends Controller
             'dose_time' => 'nullable|string',
             'ongoing_treatment' => 'nullable|string',
             'condition_not_allow_pe' => 'nullable|string',
-            'visual_difficulties' => 'nullable|string',
+            'visual_dificulties' => 'nullable|string',
             'hearing_speech_difficulties' => 'nullable|string',
             'medical_conditions' => 'nullable|string',
             'other_medical_conditions' => 'nullable|string',

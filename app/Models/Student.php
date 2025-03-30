@@ -38,7 +38,7 @@ class Student extends Model
         'dose_time',
         'ongoing_treatment',
         'condition_not_allow_pe',
-        'visual_difficulties',
+        'visual_dificulties',
         'hearing_speech_difficulties',
         'medical_conditions',
         'other_medical_conditions',
@@ -46,27 +46,16 @@ class Student extends Model
     ];
 
     public static $levels = [
-        '1',
-        '2',
-        '3',
-        '4',
-        '5',
-        '6',
-        '7',
-        '8',
-        '9',
-        '10',
-        '11',
-        '12',
-        '1st',
-        '2nd',
-        '3rd',
-        '4th',
-        '5th'
+        'GRADE 11',
+        'GRADE 12',
+        '1ST YEAR COLLEGE',
+        '2nd YEAR COLLEGE',
+        '3RD YEAR COLLEGE',
+        '4TH YEAR COLLEGE',
+        '5TH YEAR COLLEGE',
     ];
     public function clinicReports()
     {
         return $this->hasMany(ClinicReport::class);
     }
-
 }
