@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\StudentClinicalReportsExport;
 use App\Models\ClinicReport;
 use App\Models\Student;
 use App\Models\User;
 use App\Notifications\NewReportNotfication;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ClinicReportController extends Controller
 {
@@ -44,7 +47,7 @@ class ClinicReportController extends Controller
 
 
         $users = User::all();
-        
+
         foreach ($users as $user) {
             $user->notify(new NewReportNotfication($report));
         }
@@ -78,7 +81,8 @@ class ClinicReportController extends Controller
     public function update(Request $request, ClinicReport $clinicReport)
     {
         $clinicReport->update([
-            'treatment' => $request->treatment
+            'treatment' => $request->treatment,
+            'user_id' => Auth::user()->id
         ]);
 
         return redirect()->route('clinical-reports.show', $clinicReport->student_id);
@@ -90,5 +94,10 @@ class ClinicReportController extends Controller
     public function destroy(ClinicReport $clinicReport)
     {
         //
+    }
+
+    public function export(Student $student)
+    {
+        return Excel::download(new StudentClinicalReportsExport($student), "{$student->firstname}-{$student->lastname}-reports.xlsx");
     }
 }

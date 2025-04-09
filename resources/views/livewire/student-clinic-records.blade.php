@@ -8,8 +8,9 @@
                     <th class="px-4 py-3">Date</th>
                     <th class="px-4 py-3">Time</th>
                     <th class="px-4 py-3">Report Details</th>
-                    <th class="px-4 py-3">Treatment</th>
                     <th class="px-4 py-3">Type</th>
+                    <th class="px-4 py-3">Treatment</th>
+                    <th class="px-4 py-3">Updated By</th>
                     <th class="px-4 py-3">actions</th>
                 </tr>
             </thead>
@@ -30,10 +31,13 @@
                             {{ $record->report_details }}
                         </td>
                         <td class="px-4 py-3">
+                            {{ Str::ucfirst($record->type) }}
+                        </td>
+                        <td class="px-4 py-3">
                             {{ $record->treatment }}
                         </td>
                         <td class="px-4 py-3">
-                            {{ Str::ucfirst($record->type) }}
+                            {{ $record->user->name }}
                         </td>
                         <td class="px-4 py-3">
                             <a href="{{ route('clinical-reports.edit', $record->id) }}"

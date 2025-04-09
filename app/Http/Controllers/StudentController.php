@@ -269,4 +269,11 @@ class StudentController extends Controller
 
         return redirect()->route('submitted');
     }
+
+    public function highRiskShow(Student $student)
+    {
+        return view('students.high-risk-show', [
+            'student' => $student
+        ]);
+    }
 }

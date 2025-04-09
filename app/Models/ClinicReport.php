@@ -11,11 +11,16 @@ class ClinicReport extends Model
         'report_details',
         'report_date',
         'type',
-        'treatment'
+        'treatment',
+        'user_id'
     ];
 
     public function student()
     {
         return $this->belongsTo(Student::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

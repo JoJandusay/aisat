@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\ClinicReport;
 use App\Models\Student;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {

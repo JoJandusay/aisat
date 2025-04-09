@@ -43,11 +43,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('clinical-reports/{student}', [ClinicReportController::class, 'show'])->name('clinical-reports.show');
     Route::get('clinical-reports/{clinicReport}/edit', [ClinicReportController::class, 'edit'])->name('clinical-reports.edit');
     Route::patch('clinical-report/{clinicReport}', [ClinicReportController::class, 'update'])->name('clinical-reports.update');
+    Route::get('clinic-report/export/{student}', [ClinicReportController::class, 'export'])->name('clinical-report.export');
+
 
     Route::patch('archives/{student}', [StudentController::class, 'archive'])->name('students.archive');
     Route::patch('archives/{student}/remove', [StudentController::class, 'removeArchive'])->name('students.archive.remove');
     Route::get('archives', [StudentController::class, 'archiveTable'])->name('archive');
     Route::get('high-risk', [StudentController::class, 'highRisk'])->name('high-risk');
+    Route::get('high-risk/{student}', [StudentController::class, 'highRiskShow'])->name('high-risk.show');
+
 });
 
 

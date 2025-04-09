@@ -16,6 +16,7 @@
                     <th class="px-4 py-3">Name</th>
                     <th class="px-4 py-3">Level</th>
                     <th class="px-4 py-3">Section</th>
+                    <th class="px-4 py-3">Action</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -36,6 +37,12 @@
                         </td>
                         <td class="px-4 py-3">
                             {{ $student->section }}
+                        </td>
+                        <td class="px-4 py-3">
+                            <a href="{{ route('high-risk.show', $student) }}"
+                                class="inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-gray-900 bg-yellow-200 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">
+                                View
+                            </a>
                         </td>
                     </tr>
                 @empty
