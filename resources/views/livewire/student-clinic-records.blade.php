@@ -6,8 +6,11 @@
                     class="text-xs tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-blue-100 dark:text-gray-400 dark:bg-gray-800">
                     <th class="px-4 py-3">#</th>
                     <th class="px-4 py-3">Date</th>
-                    <th class="px-4 py-3">Details</th>
+                    <th class="px-4 py-3">Time</th>
+                    <th class="px-4 py-3">Report Details</th>
+                    <th class="px-4 py-3">Treatment</th>
                     <th class="px-4 py-3">Type</th>
+                    <th class="px-4 py-3">actions</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -18,13 +21,25 @@
                             {{ $loop->iteration }}
                         </td>
                         <td class="px-4 py-3">
-                            {{ \Carbon\Carbon::parse($record->report_date)->format('F d, Y | h:i A') }}
+                            {{ \Carbon\Carbon::parse($record->report_date)->format('F d, Y') }}
+                        </td>
+                        <td class="px-4 py-3">
+                            {{ \Carbon\Carbon::parse($record->report_date)->format('h:i A') }}
                         </td>
                         <td class="px-4 py-3">
                             {{ $record->report_details }}
                         </td>
                         <td class="px-4 py-3">
+                            {{ $record->treatment }}
+                        </td>
+                        <td class="px-4 py-3">
                             {{ Str::ucfirst($record->type) }}
+                        </td>
+                        <td class="px-4 py-3">
+                            <a href="{{ route('clinical-reports.edit', $record->id) }}"
+                                class="inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-gray-900 bg-yellow-300 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">
+                                Treatment
+                            </a>
                         </td>
                     </tr>
                 @empty

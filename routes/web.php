@@ -41,6 +41,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('clinical-reports', [ClinicReportController::class, 'index'])->name('clinical-reports.index');
     Route::get('clinical-reports/{student}', [ClinicReportController::class, 'show'])->name('clinical-reports.show');
+    Route::get('clinical-reports/{clinicReport}/edit', [ClinicReportController::class, 'edit'])->name('clinical-reports.edit');
+    Route::patch('clinical-report/{clinicReport}', [ClinicReportController::class, 'update'])->name('clinical-reports.update');
 
     Route::patch('archives/{student}', [StudentController::class, 'archive'])->name('students.archive');
     Route::patch('archives/{student}/remove', [StudentController::class, 'removeArchive'])->name('students.archive.remove');
@@ -48,6 +50,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('high-risk', [StudentController::class, 'highRisk'])->name('high-risk');
 });
 
+
+
 Route::get('students/{code}', [StudentController::class, 'show'])->name('students.show');
 
 Route::get('students/{code}', [StudentController::class, 'show'])->name('students.show');
+
+Route::get('student/register', [StudentController::class, 'register'])->name('register');
+Route::post('student/register', [StudentController::class, 'registerStudent'])->name('register.student');
+Route::view('submitted', 'students.submitted')->name('submitted');

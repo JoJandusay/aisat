@@ -10,7 +10,8 @@ class ClinicReport extends Model
         'student_id',
         'report_details',
         'report_date',
-        'type'
+        'type',
+        'treatment'
     ];
 
     public function student()

@@ -218,4 +218,55 @@ class StudentController extends Controller
             'qr_code' => $qrCode
         ]);
     }
+    public function register()
+    {
+        return view('students.register', [
+            'levels' => Student::$levels
+        ]);
+    }
+
+    public function registerStudent(Request $request)
+    {
+        $data = $request->validate([
+            'student_code' => 'required|string|unique:students,student_code',
+            'lastname' => 'required|string|max:255',
+            'firstname' => 'required|string|max:255',
+            'middlename' => 'nullable|string|max:255',
+            'address' => 'required|string',
+            'dob' => 'required|date|before:today',
+            'mobile_number' => ['required', 'string', 'regex:/^(09\d{9}|\+639\d{9})$/'],
+            'sex' => 'required|in:Male,Female',
+            'level' => 'required',
+            'section' => 'required',
+            'father_lastname' => 'nullable|string|max:255',
+            'father_firstname' => 'nullable|string|max:255',
+            'father_middlename' => 'nullable|string|max:255',
+            'father_mobile_number' => ['nullable', 'string', 'regex:/^(09\d{9}|\+639\d{9})$/'],
+            'mother_lastname' => 'nullable|string|max:255',
+            'mother_firstname' => 'nullable|string|max:255',
+            'mother_middlename' => 'nullable|string|max:255',
+            'mother_mobile_number' => ['nullable', 'string', 'regex:/^(09\d{9}|\+639\d{9})$/'],
+            'first_vaccine_name' => 'nullable|string|max:255',
+            'second_vaccine_name' => 'nullable|string|max:255',
+            'first_vaccine_date' => 'nullable|date|before_or_equal:today',
+            'second_vaccine_date' => 'nullable|date|after_or_equal:1st_vaccine_date',
+            'booster_name' => 'nullable|string|max:255',
+            'booster_date' => 'nullable|date|after_or_equal:2nd_vaccine_date',
+            'had_covid' => 'nullable',
+            'allergies' => 'nullable|string',
+            'medication_name' => 'nullable|string',
+            'used_to_treat' => 'nullable|string',
+            'dose_time' => 'nullable|string',
+            'ongoing_treatment' => 'nullable|string',
+            'condition_not_allow_pe' => 'nullable|string',
+            'visual_difficulties' => 'nullable|string',
+            'hearing_speech_difficulties' => 'nullable|string',
+            'medical_conditions' => 'nullable|string',
+            'other_medical_conditions' => 'nullable|string',
+        ]);
+
+        Student::create($data);
+
+        return redirect()->route('submitted');
+    }
 }

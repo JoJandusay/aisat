@@ -67,7 +67,9 @@ class ClinicReportController extends Controller
      */
     public function edit(ClinicReport $clinicReport)
     {
-        //
+        return view('clinical-reports.edit', [
+            'record' => $clinicReport
+        ]);
     }
 
     /**
@@ -75,7 +77,11 @@ class ClinicReportController extends Controller
      */
     public function update(Request $request, ClinicReport $clinicReport)
     {
-        //
+        $clinicReport->update([
+            'treatment' => $request->treatment
+        ]);
+
+        return redirect()->route('clinical-reports.show', $clinicReport->student_id);
     }
 
     /**
