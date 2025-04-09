@@ -95,22 +95,30 @@
                                 </td>
                                 <td class="px-4 py-3">
                                     <div class="flex items-center space-x-2 text-sm">
-                                        {{-- <a href=""
+                                        <a href="{{ route('users.edit', $admin) }}"
                                             class="inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-gray-900 bg-green-200 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">
                                             Edit
-                                        </a> --}}
-                                        @if (Auth::user()->is_superadmin)
-                                            <form class="hidden" id="delete-{{ $admin->id }}"
-                                                action="{{ route('users.destroy', $admin) }}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                            </form>
-                                            <button form="delete-{{ $admin->id }}"
-                                                class="inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-gray-900 bg-red-300 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-                                                onclick="return confirm('Delete this admin from the system?')">
-                                                Delete
-                                            </button>
-                                        @endif
+                                        </a>
+                                        <form class="hidden" id="password-reset-{{ $admin->id }}"
+                                            action="{{ route('reset-password', $admin) }}" method="post">
+                                            @csrf
+                                            @method('patch')
+                                        </form>
+                                        <button form="password-reset-{{ $admin->id }}"
+                                            class="inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-gray-900 bg-yellow-300 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+                                            onclick="return confirm('Reset password of this user?')">
+                                            Reset Password
+                                        </button>
+                                        <form class="hidden" id="delete-{{ $admin->id }}"
+                                            action="{{ route('users.destroy', $admin) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                        <button form="delete-{{ $admin->id }}"
+                                            class="inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-gray-900 bg-red-300 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-primary-300 sm:w-auto dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+                                            onclick="return confirm('Delete this admin from the system?')">
+                                            Delete
+                                        </button>
                                     </div>
                                 </td>
                             </tr>

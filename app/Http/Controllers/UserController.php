@@ -42,4 +42,30 @@ class UserController extends Controller
 
         return redirect()->route('users.index')->with('success', 'New user added.');
     }
+    public function edit(User $user)
+    {
+        return view('users.edit', [
+            'user' => $user
+        ]);
+    }
+    public function update(User $user, Request $request)
+    {
+        $validated_data = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|unique:users,email,' . $user->id
+        ]);
+
+        $user->update($validated_data);
+
+        return redirect()->route('users.index')->with('success', 'User updated successfully!');
+    }
+
+    public function resetPassword(User $user)
+    {
+        $user->update([
+            'password' => $user->email
+        ]);
+
+        return redirect()->route('users.index')->with('success', 'Password reset success. Your new password is: ' . $user->email);
+    }
 }

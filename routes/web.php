@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OtpController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\CheckSuperAdmin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -22,10 +23,15 @@ Route::group(['middleware' => 'auth'], function () {
         return redirect()->route('dashboard');
     });
 
-    Route::get('admins', [UserController::class, 'index'])->name('users.index');
-    Route::get('admins/create', [UserController::class, 'create'])->name('users.create');
-    Route::post('admins', [UserController::class, 'store'])->name('users.store');
-    Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::middleware([CheckSuperAdmin::class])->group(function () {
+        Route::get('admins', [UserController::class, 'index'])->name('users.index');
+        Route::get('admins/create', [UserController::class, 'create'])->name('users.create');
+        Route::get('admins/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+        Route::patch('admins/{user}', [UserController::class, 'update'])->name('users.update');
+        Route::post('admins', [UserController::class, 'store'])->name('users.store');
+        Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+        Route::patch('reset-password/{user}', [UserController::class, 'resetPassword'])->name('reset-password');
+    });
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 

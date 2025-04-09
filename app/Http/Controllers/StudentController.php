@@ -161,7 +161,7 @@ class StudentController extends Controller
     {
         $student->delete();
 
-        return redirect()->route('students.index')->with('success', 'Delete successfully.');
+        return redirect()->route('archive')->with('success', 'Delete successfully.');
     }
 
     /**
