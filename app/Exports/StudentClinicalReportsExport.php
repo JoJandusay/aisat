@@ -58,9 +58,9 @@ class StudentClinicalReportsExport implements FromCollection, WithMapping, WithH
             Carbon::parse($report->report_date)->format('F d, Y'),
             Carbon::parse($report->report_date)->format('h:i A'),
             $report->report_details,
-            $report->treatment,
+            $report->treatment ?? 'N/A',
             $report->type,
-            $report->user->name
+            $report->user ? $report->user->name : 'N/A'
         ];
     }
 }
