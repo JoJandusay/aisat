@@ -37,7 +37,7 @@
                             {{ $record->treatment }}
                         </td>
                         <td class="px-4 py-3">
-                            {{ $record->user ? $report->user->name : 'N/A'  }}
+                            {{ $record->user ? $record->user->name : 'N/A'  }}
                         </td>
                         <td class="px-4 py-3">
                             <a href="{{ route('clinical-reports.edit', $record->id) }}"
