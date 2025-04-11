@@ -53,6 +53,8 @@ class StudentsTable extends Component
                         ->orWhere('student_code', 'like', '%' . $this->search . '%');
                 });
             })
+            ->orderBy('lastname', 'asc')
+            ->orderBy('firstname', 'asc')
             ->paginate(10);
 
         return view('livewire.students-table', [

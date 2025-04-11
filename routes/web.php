@@ -4,9 +4,11 @@ use App\Http\Controllers\ClinicReportController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\OtpController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\CheckRegistration;
 use App\Http\Middleware\CheckSuperAdmin;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +33,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('admins', [UserController::class, 'store'])->name('users.store');
         Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
         Route::patch('reset-password/{user}', [UserController::class, 'resetPassword'])->name('reset-password');
+        Route::get('maintenance', [MaintenanceController::class, 'index'])->name('maintenance.index');
+        Route::patch('maintenance/{maintenance}', [MaintenanceController::class, 'update'])->name('maintenance.update');
     });
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -51,7 +55,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('archives', [StudentController::class, 'archiveTable'])->name('archive');
     Route::get('high-risk', [StudentController::class, 'highRisk'])->name('high-risk');
     Route::get('high-risk/{student}', [StudentController::class, 'highRiskShow'])->name('high-risk.show');
-
 });
 
 
@@ -60,6 +63,8 @@ Route::get('students/{code}', [StudentController::class, 'show'])->name('student
 
 Route::get('students/{code}', [StudentController::class, 'show'])->name('students.show');
 
-Route::get('student/register', [StudentController::class, 'register'])->name('register');
-Route::post('student/register', [StudentController::class, 'registerStudent'])->name('register.student');
-Route::view('submitted', 'students.submitted')->name('submitted');
+Route::middleware([CheckRegistration::class])->group(function () {
+    Route::get('student/register', [StudentController::class, 'register'])->name('register');
+    Route::post('student/register', [StudentController::class, 'registerStudent'])->name('register.student');
+    Route::view('submitted', 'students.submitted')->name('submitted');
+});

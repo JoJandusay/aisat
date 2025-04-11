@@ -21,13 +21,18 @@ class ClinicalRecords extends Component
     {
         return view('livewire.clinical-records', [
             'students' => Student::where('is_archived', false)
+                ->has('clinicReports', '>', 0)
                 ->when($this->search, function ($query) {
                     return $query->where(function ($q) {
                         $q->where('firstname', 'like', '%' . $this->search . '%')
                             ->orWhere('lastname', 'like', '%' . $this->search . '%')
                             ->orWhere('student_code', 'like', '%' . $this->search . '%');
                     });
-                })->with('clinicReports')->paginate(10)
+                })
+                ->with('clinicReports')
+                ->orderBy('lastname', 'asc')
+                ->orderBy('firstname', 'asc')
+                ->paginate(10)
         ]);
     }
 }

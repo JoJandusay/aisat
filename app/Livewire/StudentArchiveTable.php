@@ -27,7 +27,10 @@ class StudentArchiveTable extends Component
                             ->orWhere('lastname', 'like', '%' . $this->search . '%')
                             ->orWhere('student_code', 'like', '%' . $this->search . '%');
                     });
-                })->paginate(10)
+                })
+                ->orderBy('lastname', 'asc')
+                ->orderBy('firstname', 'asc')
+                ->paginate(10)
         ]);
     }
 }
