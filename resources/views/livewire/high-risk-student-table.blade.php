@@ -30,7 +30,9 @@
                             {{ $student->student_code }}
                         </td>
                         <td class="px-4 py-3">
-                            {{ $student->firstname }} {{ $student->lastname }}
+                            {{ $student->lastname }},
+                            {{ $student->firstname }}
+                            {{ $student->middlename ? ' ' . $student->middlename : '' }}
                         </td>
                         <td class="px-4 py-3">
                             {{ $student->level }}
