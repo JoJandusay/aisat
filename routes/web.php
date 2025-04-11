@@ -37,6 +37,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('maintenance/{maintenance}', [MaintenanceController::class, 'update'])->name('maintenance.update');
     });
 
+    Route::get('change-password', [UserController::class, 'changePasswordForm'])->name('change-pass.create');
+    Route::post('change-password', [UserController::class, 'changePassword'])->name('change-pass.update');
+
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');

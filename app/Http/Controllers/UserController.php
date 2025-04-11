@@ -68,4 +68,24 @@ class UserController extends Controller
 
         return redirect()->route('users.index')->with('success', 'Password reset success. Your new password is: ' . $user->email);
     }
+
+    public function changePasswordForm()
+    {
+        return view('users.change-password');
+    }
+
+    public function changePassword(User $user, Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'new_password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $user = Auth::user();
+        $user->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return redirect()->route('change-pass.create')->with('success', 'Password updated successfully.');
+    }
 }
